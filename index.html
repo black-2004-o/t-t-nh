@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💖 Gửi em 💖</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body {
+      margin: 0; min-height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    }
+    .card {
+      width: 100%; max-width: 420px;
+      background: #fff; border-radius: 20px;
+      padding: 20px; text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    img.avatar {
+      width: 120px; height: 120px;
+      border-radius: 50%; object-fit: cover;
+      border: 4px solid #ff7aa2;
+      margin-bottom: 10px;
+    }
+    h2 { color: #ff5f8f; margin: 10px 0; }
+    input {
+      width: 100%; padding: 12px;
+      border-radius: 10px; border: 1px solid #ccc;
+      margin: 10px 0;
+    }
+    button {
+      width: 100%; padding: 12px;
+      border: none; border-radius: 10px;
+      background: #ff5f8f; color: white;
+      font-size: 16px; cursor: pointer;
+    }
+    button:hover { background: #ff3f7a; }
+    .hidden { display: none; }
+    .love-layout {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+    .love-text {
+      flex: 1;
+      min-width: 180px;
+    }
+    .images {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .images img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    p { color: #555; }
+  </style>
+</head>
+<body>
+
+  <!-- Trang nhập mật khẩu -->
+  <div class="card" id="login">
+    <img src="z7446114249137_21f9d7c38efbb323077b964a519c369c.jpg" alt="Avatar cô gái" class="avatar" />
+    <h2>💌 Gửi riêng cho em đó bé ạ 💌</h2>
+    <p>Nhập mật khẩu để mở trái tim anh mật khẩu là ngày đặt biệt của anh với bé ❤️</p>
+    <input type="password" id="password" placeholder="Mật khẩu" />
+    <button onclick="checkPassword()">Mở 💖</button>
+  </div>
+
+  <!-- Trang tỏ tình -->
+  <div class="card hidden" id="love">
+    <h2>Anh có đôi lời muốn gửi đến bé ( An Ngọc Huyền ) 💕</h2>
+    <div class="love-layout">
+      <div class="love-text">
+       <p>
+  Từ khoảnh khắc đầu tiên gặp em, thế giới của anh như chậm lại,
+  mọi ồn ào bỗng trở nên dịu dàng hơn vì có em ở đó.<br /><br />
+
+  Anh không dám hứa sẽ mang cả thế giới đặt vào tay em,
+  nhưng anh hứa sẽ dành cả thế giới nhỏ bé của anh
+  để yêu thương, chở che và trân trọng em mỗi ngày.<br /><br />
+
+  Anh hứa sẽ ở bên em khi em cười rạng rỡ,
+  và cũng sẽ nắm tay em thật chặt khi em mệt mỏi hay yếu lòng.<br /><br />
+
+  Nếu một ngày nào đó em thấy buồn,
+  chỉ cần quay lại, anh vẫn ở đây — lắng nghe,
+  thấu hiểu và yêu em bằng tất cả sự chân thành của mình.
+</p>
+
+      </div>
+      <div class="images">
+        <img src="img1.jpg" />
+        <img src="img2.jpg" />
+        <img src="img3.jpg" />
+        <img src="img4.jpg" />
+        <img src="img5.jpg" />
+        <img src="img6.jpg" />
+      </div>
+    </div>
+    <button style="margin-top:20px" onclick="goPromise()">Anh hứa 💍</button>
+  </div>
+
+  <!-- Trang lời hứa -->
+  <div class="card hidden" id="promise">
+    <h2>💖 Lời hứa của anh 💖</h2>
+    <p>
+      Anh hứa sẽ trân trọng em mỗi ngày.
+      Hứa không rời bỏ khi khó khăn.
+      Hứa cùng em đi chậm lại, cùng nhau già đi.
+    </p>
+    <p style="font-weight:bold; color:#ff5f8f;">Em có đồng ý làm người yêu anh không? 🌸</p>
+  </div>
+
+  <script>
+    const PASSWORD = ""; // đổi mật khẩu tại đây
+
+    function checkPassword() {
+      const input = document.getElementById('password').value;
+      if (input === PASSWORD) {
+        document.getElementById('login').classList.add('hidden');
+        document.getElementById('love').classList.remove('hidden');
+      } else {
+        alert('Sai mật khẩu rồi 😢');
+      }
+    }
+
+    function goPromise() {
+      document.getElementById('love').classList.add('hidden');
+      document.getElementById('promise').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
