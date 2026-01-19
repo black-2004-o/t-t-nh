@@ -1,147 +1,199 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>💖 Gửi em 💖</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>💖 Gửi em 💖</title>
 
-  <style>
-    * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow-x: hidden;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
 
-    .page {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+/* KHUNG CHÍNH */
+.page {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: #fff;
-      border-radius: 20px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      z-index: 2;
-    }
+/* CARD */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  z-index: 2;
+}
 
-    img.avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #ff7aa2;
-      margin-bottom: 10px;
-    }
+img.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ff7aa2;
+  margin-bottom: 10px;
+}
 
-    h2 {
-      color: #ff5f8f;
-      margin: 10px 0;
-    }
+h2 {
+  color: #ff5f8f;
+  margin: 10px 0;
+  font-size: 20px;
+}
 
-    p {
-      color: #555;
-      line-height: 1.6;
-    }
+p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 15px;
+}
 
-    input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      margin: 10px 0;
-    }
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  font-size: 14px;
+}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 10px;
-      background: #ff5f8f;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #ff5f8f;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    button:hover { background: #ff3f7a; }
+button:hover {
+  background: #ff3f7a;
+}
 
-    .hidden { display: none; }
+.hidden {
+  display: none;
+}
 
-    /* ẢNH HAI BÊN */
-    .side-images {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      display: grid;
-      grid-template-rows: repeat(3, 1fr);
-      gap: 16px;
-      z-index: 1;
-    }
+/* ẢNH HAI BÊN (PC) */
+.side-images {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px;
+  z-index: 1;
+}
 
-    .side-images img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    }
+.side-images img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
 
-    .left { left: 0; }
-    .right { right: 0; }
+.left { left: 0; }
+.right { right: 0; }
 
-    /* TIM BAY */
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 22px;
-      animation: floatUp 6s linear forwards;
-      opacity: 0.8;
-      z-index: 0;
-    }
+/* TIM BAY */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 22px;
+  animation: floatUp 6s linear forwards;
+  opacity: 0.8;
+  z-index: 0;
+}
 
-    @keyframes floatUp {
-      from {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-120vh) scale(1.6);
-        opacity: 0;
-      }
-    }
+@keyframes floatUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh) scale(1.6);
+    opacity: 0;
+  }
+}
 
-    @media (max-width: 768px) {
-      .page {
-        flex-direction: column;
-      }
+/* TABLET */
+@media (max-width: 992px) {
+  .side-images img {
+    width: 90px;
+    height: 90px;
+  }
+}
 
-      .side-images {
-        position: static;
-        transform: none;
-        grid-template-columns: repeat(3, 1fr);
-        margin: 15px 0;
-      }
+/* MOBILE */
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;
+  }
 
-      .side-images img {
-        width: 90px;
-        height: 90px;
-      }
-    }
-  </style>
+  .page {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .side-images {
+    position: static;
+    transform: none;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: none;
+    margin: 10px 0;
+  }
+
+  .side-images img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .card {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  h2 { font-size: 18px; }
+  p { font-size: 14px; }
+}
+
+/* MOBILE NHỎ */
+@media (max-width: 480px) {
+  .side-images img {
+    width: 75px;
+    height: 75px;
+  }
+
+  img.avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  button {
+    font-size: 15px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -161,7 +213,7 @@
     <img src="z7446114238333_0ff312a177e5eaeb479c3bdeed2c8a9a.jpg">
   </div>
 
-  <!-- Trang nhập mật khẩu -->
+  <!-- Login -->
   <div class="card" id="login">
     <img src="z7446114249137_21f9d7c38efbb323077b964a519c369c.jpg" class="avatar">
     <h2>💌 Gửi riêng cho em đó bé ạ 💌</h2>
@@ -170,7 +222,7 @@
     <button onclick="checkPassword()">Mở 💖</button>
   </div>
 
-  <!-- Trang tỏ tình -->
+  <!-- Love -->
   <div class="card hidden" id="love">
     <h2>Anh có đôi lời muốn gửi đến bé ( An Ngọc Huyền ) 💕</h2>
     <p>
@@ -195,7 +247,7 @@
     <button style="margin-top:20px" onclick="goPromise()">Anh hứa 💍</button>
   </div>
 
-  <!-- Trang lời hứa -->
+  <!-- Promise -->
   <div class="card hidden" id="promise">
     <h2>💖 Lời hứa của anh 💖</h2>
     <p>
@@ -214,7 +266,8 @@
     <input type="password" id="promisePass" placeholder="Mật khẩu mở lời cuối 💌">
     <button onclick="unlockLove()">Mở 💖</button>
 
-    <p id="finalQuestion" class="hidden" style="font-weight:bold;color:#ff5f8f;margin-top:15px">
+    <p id="finalQuestion" class="hidden"
+       style="font-weight:bold;color:#ff5f8f;margin-top:15px">
       Em đồng ý là người yêu bí mật của anh được không 🥰 🌸
     </p>
   </div>
@@ -222,42 +275,42 @@
 </div>
 
 <script>
-  const PASSWORD = "12.10";
-  const PROMISE_PASS = "09.05"; // đổi nếu muốn
+const PASSWORD = "12.10";
+const PROMISE_PASS = "09.05";
 
-  function checkPassword() {
-    if (password.value === PASSWORD) {
-      login.classList.add("hidden");
-      love.classList.remove("hidden");
-    } else {
-      alert("Sai mật khẩu rồi em không nhớ là cắn bụng em đó 😢");
-    }
+function checkPassword() {
+  if (password.value === PASSWORD) {
+    login.classList.add("hidden");
+    love.classList.remove("hidden");
+  } else {
+    alert("Sai mật khẩu rồi em không nhớ là cắn bụng em đó 😢");
   }
+}
 
-  function goPromise() {
-    love.classList.add("hidden");
-    promise.classList.remove("hidden");
-  }
+function goPromise() {
+  love.classList.add("hidden");
+  promise.classList.remove("hidden");
+}
 
-  function unlockLove() {
-    if (promisePass.value === PROMISE_PASS) {
-      finalQuestion.classList.remove("hidden");
-    } else {
-      alert("Sai mật khẩu rồi bé ơi 💔");
-    }
+function unlockLove() {
+  if (promisePass.value === PROMISE_PASS) {
+    finalQuestion.classList.remove("hidden");
+  } else {
+    alert("Sai mật khẩu rồi bé ơi 💔");
   }
+}
 
-  /* TIM BAY */
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerText = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 7000);
-  }
-  setInterval(createHeart, 500);
+/* TIM BAY */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}
+setInterval(createHeart, 500);
 </script>
 
 </body>
