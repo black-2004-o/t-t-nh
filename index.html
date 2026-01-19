@@ -15,6 +15,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow-x: hidden;
     }
 
     .page {
@@ -27,7 +28,6 @@
       align-items: center;
     }
 
-    /* CARD */
     .card {
       width: 100%;
       max-width: 420px;
@@ -103,7 +103,27 @@
     .left { left: 0; }
     .right { right: 0; }
 
-    /* MOBILE */
+    /* TIM BAY */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 22px;
+      animation: floatUp 6s linear forwards;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-120vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+
     @media (max-width: 768px) {
       .page {
         flex-direction: column;
@@ -113,7 +133,6 @@
         position: static;
         transform: none;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: none;
         margin: 15px 0;
       }
 
@@ -153,7 +172,7 @@
 
   <!-- Trang tỏ tình -->
   <div class="card hidden" id="love">
-    <h2>Anh có đôi lời muốn gửi đến bé  ( An Ngọc Huyền ) 💕</h2>
+    <h2>Anh có đôi lời muốn gửi đến bé ( An Ngọc Huyền ) 💕</h2>
     <p>
       Từ khoảnh khắc đầu tiên gặp em, thế giới của anh như chậm lại,
       mọi ồn ào bỗng trở nên dịu dàng hơn vì có em ở đó.<br><br>
@@ -181,17 +200,21 @@
     <h2>💖 Lời hứa của anh 💖</h2>
     <p>
       Anh hứa sẽ trân trọng em không chỉ trong những ngày vui,
-    mà cả những lúc em buồn, mệt mỏi hay yếu lòng.<br><br>
+      mà cả những lúc em buồn, mệt mỏi hay yếu lòng.<br><br>
 
-    Anh hứa sẽ lắng nghe em nhiều hơn,
-    không chỉ nghe bằng tai,
-    mà bằng cả sự thấu hiểu và chân thành trong tim.<br><br>
+      Anh hứa sẽ lắng nghe em nhiều hơn,
+      không chỉ nghe bằng tai,
+      mà bằng cả sự thấu hiểu và chân thành trong tim.<br><br>
 
-    Anh hứa sẽ không rời bỏ em khi khó khăn,
-    không im lặng khi có hiểu lầm,
-    và không quay lưng khi mọi thứ chưa hoàn hảo.<br><br>
+      Anh hứa sẽ không rời bỏ em khi khó khăn,
+      không im lặng khi có hiểu lầm,
+      và không quay lưng khi mọi thứ chưa hoàn hảo.
     </p>
-    <p style="font-weight:bold;color:#ff5f8f">
+
+    <input type="password" id="promisePass" placeholder="Mật khẩu mở lời cuối 💌">
+    <button onclick="unlockLove()">Mở 💖</button>
+
+    <p id="finalQuestion" class="hidden" style="font-weight:bold;color:#ff5f8f;margin-top:15px">
       Em đồng ý là người yêu bí mật của anh được không 🥰 🌸
     </p>
   </div>
@@ -199,11 +222,11 @@
 </div>
 
 <script>
-  const PASSWORD = "12.10"; // nhập mật khẩu
+  const PASSWORD = "12.10";
+  const PROMISE_PASS = "yeuanh"; // đổi nếu muốn
 
   function checkPassword() {
-    const input = document.getElementById("password").value;
-    if (input === PASSWORD) {
+    if (password.value === PASSWORD) {
       login.classList.add("hidden");
       love.classList.remove("hidden");
     } else {
@@ -215,6 +238,27 @@
     love.classList.add("hidden");
     promise.classList.remove("hidden");
   }
+
+  function unlockLove() {
+    if (promisePass.value === PROMISE_PASS) {
+      finalQuestion.classList.remove("hidden");
+    } else {
+      alert("Sai mật khẩu rồi bé ơi 💔");
+    }
+  }
+
+  /* TIM BAY */
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+  }
+  setInterval(createHeart, 500);
 </script>
+
 </body>
 </html>
