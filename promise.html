@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💖 Bí mật của anh 💖</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg,#fbc2eb,#a6c1ee);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  width: 100%;
+  max-width: 380px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #ff7aa2;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin: 12px 0;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #ff5f8f;
+  color: white;
+  font-size: 16px;
+}
+
+.hidden { display: none; }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <img src="z7446114249137_21f9d7c38efbb323077b964a519c369c.jpg" class="avatar">
+  <h2>💌 Mật khẩu bí mật 💌</h2>
+  <p>Chỉ người đặc biệt mới mở được 💗</p>
+
+  <input type="password" id="promisePass" placeholder="Mật khẩu mở lời cuối">
+  <button onclick="unlockLove()">Mở 💖</button>
+
+  <p id="finalQuestion" class="hidden"
+     style="margin-top:15px;font-weight:bold;color:#ff5f8f">
+    Em đồng ý là người yêu bí mật của anh được không 🥰 🌸
+  </p>
+</div>
+
+<script>
+const PROMISE_PASS = "09.05";
+
+function unlockLove() {
+  if (promisePass.value === PROMISE_PASS) {
+    finalQuestion.classList.remove("hidden");
+  } else {
+    alert("Sai mật khẩu rồi bé ơi 💔");
+  }
+}
+</script>
+
+</body>
+</html>
