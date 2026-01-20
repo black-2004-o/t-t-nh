@@ -302,10 +302,12 @@ button:hover {
 
 <script>
 const PASSWORD = "12.10";
+const PROMISE_PASS = "09.05";
 
 function checkPassword() {
   if (password.value === PASSWORD) {
-    window.location.href = "promise.html";
+    login.classList.add("hidden");
+    love.classList.remove("hidden");
   } else {
     alert("Sai mật khẩu rồi em không nhớ là cắn bụng em đó 😢");
   }
